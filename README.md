@@ -5,7 +5,7 @@
 
 </P>
 
-# Calculadora com React
+# Formulario com React
 
 Este é um projeto de exemplo que demonstra a criação de um formulário utilizando a biblioteca React. O formulário foi desenvolvido como uma aplicação web responsiva, onde os usuários podem preencher informações pessoais e enviá-las.
 
