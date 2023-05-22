@@ -37,3 +37,7 @@ form{
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .modalButton{
+    margin-left: 5px;
+  }

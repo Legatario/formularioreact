@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputField from "./inputs/InputField";
 import './Form.css';
 import GenderField from "./inputs/GenderField";
@@ -6,12 +6,30 @@ import CivilStatusField from "./inputs/CivilStatusField"
 import DocumentType from "./inputs/DocumentesType";
 import CpfField from "./inputs/CpfFiel";
 import Submission from './submission/Submission';
+import Modal from './modal/Modal';
 
 
 const Form = () =>{
     const [formData, setFormData] = useState({ nome: '', idade: '', genero: '', estadoCivil: '', tipoDocumento: '', cpf: '', email:'' });
+    const [submittedData, setSubmittedData] = useState([])
+    const [showModal, setShowModal] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
 
-    const [submittedData, setSubmittedData] = useState(null)
+    const handleModalOpen = (data) => {
+        setSelectedData(data);
+        setShowModal(true);
+      };
+
+    const handleModalClose = () => {
+        setShowModal(false);
+      };
+      
+      useEffect(() => {
+        if (showModal) {
+          // Realizar ações adicionais com o selectedData
+          console.log(selectedData);
+        }
+      }, [showModal, selectedData]); 
 
     const handleChange = (e) =>{
         //logica para receber o valor de cada input
@@ -28,12 +46,18 @@ const Form = () =>{
         console.log(formData)
         const isValidCpf = validateCpf(formData.cpf);
         if (!formData.cpf || isValidCpf) {
-            setSubmittedData(formData);
+            setSubmittedData([...submittedData, formData]);
             
             //limpa os campos após o envio do formulario
             setFormData({nome: '', idade: '', genero: '', estadoCivil: '', tipoDocumento: '', cpf: '', email: ''})
           return;
         }
+    }
+
+    const handleDelete = (index) =>{
+        const newData = [...submittedData];
+        newData.splice(index, 1);
+        setSubmittedData(newData)
     }
 
     const validateCpf = (cpf) =>{
@@ -45,6 +69,7 @@ const Form = () =>{
 
 
     return(
+        <div>
         <form onSubmit={handleSubmit}>
             <InputField
                 label="Nome"
@@ -108,8 +133,13 @@ const Form = () =>{
             />
             
             <button type='submit'>Enviar</button>
-            {submittedData && <Submission data={submittedData}/>}
+
         </form>
+        {submittedData.length > 0 && <Submission data={submittedData} onDelete={handleDelete} onModalOpen={handleModalOpen}/>}
+        {showModal && (
+            <Modal onCloseModal={handleModalClose} dataModal={selectedData} />
+        )}
+        </div>
     )
 }
 
