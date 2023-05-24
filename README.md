@@ -32,6 +32,15 @@ Após o envio do formulário, as informações preenchidas são exibidas em uma 
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /> <br>
 <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /> <br>
 
+## Como Executar
+
+1. Certifique-se de ter o Node.js e o npm instalados em sua máquina.
+2. Faça o download ou clone este repositório.
+3. Navegue até o diretório raiz do projeto.
+4. Execute o seguinte comando para instalar as dependências:
+5. Em seguida, execute o comando para iniciar o aplicativo:
+6. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para ver o componente em ação.
+
 
 ## Autor
 
