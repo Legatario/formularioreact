@@ -26,7 +26,7 @@ const Form = () =>{
       
       useEffect(() => {
         if (showModal) {
-          // Realizar ações adicionais com o selectedData
+          // Realizar ações adicionais com o selectedDatass
           console.log(selectedData);
         }
       }, [showModal, selectedData]); 
